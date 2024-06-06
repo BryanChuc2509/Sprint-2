@@ -5,21 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
-
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
-        }
-
-        .Logo{
-            transition: scale 300ms;
-        }
-
-        .Logo:hover{
-            scale: 1.15;
         }
 
         header {
@@ -29,8 +19,6 @@
             background-color: #000404;
             height: 60px;
         }
-
-        /* Sección principal | Main */
 
         .main {
             display: flex;
@@ -52,8 +40,7 @@
             grid-template-rows: 90px 30px;
             grid-template-areas:
                 "img description description"
-                "img precio eliminar"
-            ;
+                "img precio eliminar";
             box-shadow: 0 0 7px black;
             border-radius: 15px;
             transition: transform .5s;
@@ -64,13 +51,12 @@
         }
 
         .description__product,
-        .btn__comprar, 
+        .btn__comprar,
         .btn__eliminar,
         .precio {
             border-radius: inherit;
             border: none;
             background-color: #dfdfe3;
-
         }
 
         .img__product {
@@ -81,16 +67,13 @@
         }
 
         .img__product:hover {
-            transform: scale(1.1);
-
+            transform: scale(.8) rotate(360deg);
         }
 
         .img__product img {
             width: 100%;
             height: auto;
         }
-
-        
 
         .description__product {
             grid-area: description;
@@ -119,15 +102,14 @@
             padding: 14px;
             border-radius: 25px;
             transition: transform .5s;
+            cursor: pointer;
         }
 
         .btn__comprar:hover {
             transform: scale(1.03);
         }
 
-        /* Animaciones para botones */
-
-        .btn__comprar, 
+        .btn__comprar,
         .btn__eliminar,
         span {
             position: relative;
@@ -135,9 +117,9 @@
             overflow: hidden;
         }
 
-        .btn__comprar::before, 
+        .btn__comprar::before,
         .btn__eliminar::before,
-        span::before  {
+        span::before {
             content: '';
             position: absolute;
             width: 130%;
@@ -154,18 +136,48 @@
             background-color: rgb(222, 78, 78);
             color: #dfdfe3;
         }
+
         .btn__comprar::before {
             background-color: rgb(104, 231, 102);
             color: #dfdfe3;
         }
 
-        .btn__comprar:hover::before, 
+        .btn__comprar:hover::before,
         .btn__eliminar:hover::before,
         span:hover::before {
             top: -30px;
             left: -40px;
         }
 
+/* Media queries para dispositivos móviles */
+@media (max-width: 600px) {
+    .container__product {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "img"
+            "description"
+            "precio"
+            "eliminar";
+    }
+
+    .description__product {
+        white-space: normal;
+    }
+
+    .img__product {
+        width: 100%;
+        text-align: center;
+    }
+
+    .img__product img {
+        width: 50%;
+    }
+
+    .btn__comprar {
+        width: 90%;
+    }
+}
     </style>
 </head>
 
@@ -177,53 +189,49 @@
     <main class="main">
         <div class="container__product">
             <div class="img__product">
-                <img src="https://media2.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/z/a/zapatillas-nike-air-max-systm-mujer-blanca-92423117-510010dm9538102-1.jpg"
-                    alt="">
+                <img src="https://media2.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/z/a/zapatillas-nike-air-max-systm-mujer-blanca-92423117-510010dm9538102-1.jpg" alt="">
             </div>
-            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe,
-                veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum
-                esse aut, fuga unde omnis tempore?
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate vitae, ex recusandae cumque eius
-                soluta facere excepturi, maxime ipsam cupiditate eaque delectus saepe perferendis sed adipisci
-                consectetur tempore sequi totam!</p>
+            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe, veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum esse aut, fuga unde omnis tempore? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate vitae, ex recusandae cumque eius soluta facere excepturi, maxime ipsam cupiditate eaque delectus saepe perferendis sed adipisci consectetur tempore sequi totam!</p>
             <span class="precio">$15210.22</span>
-            <button class="btn__eliminar">Eliminar</button>
+            <button class="btn__eliminar" onclick="eliminarProducto(event)">Eliminar</button>
         </div>
         <div class="container__product">
             <div class="img__product">
-                <img src="https://sneakerdenn.com/cdn/shop/products/image_63ba4104-f229-40d6-84d5-972dec3910fa_770x.jpg?v=1669086727"
-                    alt="">
+                <img src="https://sneakerdenn.com/cdn/shop/products/image_63ba4104-f229-40d6-84d5-972dec3910fa_770x.jpg?v=1669086727" alt="">
             </div>
-            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe,
-                veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum
-                esse aut, fuga unde omnis tempore?</p>
+            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe, veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum esse aut, fuga unde omnis tempore?</p>
             <span class="precio">$15210.22</span>
-            <button class="btn__eliminar">Eliminar</button>
+            <button class="btn__eliminar" onclick="eliminarProducto(event)">Eliminar</button>
         </div>
         <div class="container__product">
             <div class="img__product">
-                <img src="https://www.innvictus.com/medias/IN-DV0991-101-1.jpg?context=bWFzdGVyfGltYWdlc3wxMTQyNjV8aW1hZ2UvanBlZ3xpbWFnZXMvaDE1L2g0NC8xMTk3NzUzNjc2NTk4Mi5qcGd8OWM4ODZhYTdlOGU1OGJkY2M0MjE0ZDhjZTJhMTQwZTg5Y2NmYTFkN2I0MzM5NWZhZjc4YTRhYjg3MGZiMGMxYw"
-                    alt="">
+                <img src="https://www.moov.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dw45d454d2/products/NIDV0806-001/NIDV0806-001-1.JPG" alt="">
             </div>
-            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe,
-                veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum
-                esse aut, fuga unde omnis tempore?</p>
+            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe, veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum esse aut, fuga unde omnis tempore?</p>
             <span class="precio">$15210.22</span>
-            <button class="btn__eliminar">Eliminar</button>
+            <button class="btn__eliminar" onclick="eliminarProducto(event)">Eliminar</button>
         </div>
         <div class="container__product">
             <div class="img__product">
-                <img src="https://zonasport.com.mx/wp-content/uploads/2022/03/air-max-ngo-2.jpg"
-                    alt="">
+                <img src="https://acdn.mitiendanube.com/stores/001/075/480/products/zapatillas-botitas-nike-air-force-1-high-07-lv8-dh7453-001-41-d06f2c8e283f8f31a516717261214495-640-0.jpg" alt="">
             </div>
-            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe,
-                veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum
-                esse aut, fuga unde omnis tempore?</p>
+            <p class="description__product">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed optio saepe, veniam laboriosam repellendus consequuntur porro adipisci sequi dolore fugiat amet neque aperiam. Rerum esse aut, fuga unde omnis tempore?</p>
             <span class="precio">$15210.22</span>
-            <button class="btn__eliminar">Eliminar</button>
+            <button class="btn__eliminar" onclick="eliminarProducto(event)">Eliminar</button>
         </div>
-        <button class="btn__comprar">Comprar</button>
+        <button class="btn__comprar" onclick="comprarProductos()">Comprar</button>
     </main>
+
+    <script>
+        function eliminarProducto(event) {
+            const productContainer = event.target.closest('.container__product');
+            productContainer.remove();
+        }
+
+        function comprarProductos() {
+            alert("Compra realizada con éxito.");
+        }
+    </script>
 </body>
 
 </html>
